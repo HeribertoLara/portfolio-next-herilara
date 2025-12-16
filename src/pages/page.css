@@ -1,0 +1,45 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.page__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0;
+}
+
+.not-found {
+  background: radial-gradient(circle at 20% 20%, rgba(0, 231, 255, 0.08), transparent 40%),
+    radial-gradient(circle at 80% 10%, rgba(255, 83, 110, 0.1), transparent 45%),
+    #050505;
+}
+
+.not-found__content {
+  max-width: 520px;
+  display: grid;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.not-found__eyebrow {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ff9faf;
+  margin: 0;
+}
+
+.not-found__actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
