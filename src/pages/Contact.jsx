@@ -1,11 +1,10 @@
-import { useForm, ValidationError } from '@formspree/react'
-import { FaWhatsapp, FaLinkedinIn, FaPhoneAlt } from 'react-icons/fa'
+import { FaWhatsapp, FaLinkedinIn } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
+import ContactForm from '../components/ContactForm'
 import { useSEO } from '../hooks/useSEO'
 import './contact.css'
 
 function Contact() {
-  const [state, handleSubmit] = useForm('xwpgjrvp')
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const canonical = origin ? `${origin}/contacto-desarrollador-web` : undefined
   const ogImage = origin ? `${origin}/images/yo-con-traje.png` : undefined
@@ -13,7 +12,7 @@ function Contact() {
   useSEO({
     title: 'Contacto | Agenda tu proyecto web con Heri Lara',
     description:
-      'Agenda tu proyecto web o automatización: envía un mensaje o escribe por WhatsApp. Respondo en menos de 24h.',
+      'Agenda tu proyecto web o automatizaciA3n: envA-a un mensaje o escribe por WhatsApp. Respondo en menos de 24h.',
     canonical,
     ogImage,
     ogImageWidth: 1200,
@@ -22,7 +21,7 @@ function Contact() {
       '@context': 'https://schema.org',
       '@type': 'ContactPage',
       name: 'Contacto Heri Lara',
-      description: 'Agenda tu proyecto web o automatización con Heri Lara.',
+      description: 'Agenda tu proyecto web o automatizaciA3n con Heri Lara.',
       url: canonical,
       mainEntity: {
         '@type': 'Person',
@@ -30,7 +29,7 @@ function Contact() {
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'sales',
-          telephone: '+52-561-583-9142',
+          telephone: '+529848045757',
           email: 'hlara9012@gmail.com',
           areaServed: 'Latin America',
         },
@@ -45,12 +44,12 @@ function Contact() {
           <p className="contact__eyebrow">Contacto</p>
           <h1 className="contact__title">Hablemos</h1>
           <p className="contact__subtitle">
-            ¿Listo para convertir visitas en clientes? Escríbeme y armamos tu funnel.
+            A¨Listo para convertir visitas en clientes? EscrA-beme y armamos tu funnel.
           </p>
           <div className="contact__channels">
             <a
               className="channel"
-              href="https://wa.me/5615839142"
+              href="https://wa.me/529848045757"
               target="_blank"
               rel="noreferrer"
             >
@@ -77,39 +76,10 @@ function Contact() {
               <span className="channel__label">LinkedIn</span>
             </a>
           </div>
-          <p className="contact__note">Respondo en menos de 24h · MX / Latam · Remoto</p>
+          <p className="contact__note">Respondo en menos de 24h Aú MX / Latam Aú Remoto</p>
         </div>
 
-        <div className="contact__form-card">
-          {state.succeeded ? (
-            <div className="contact__thanks">¡Gracias! Te responderé muy pronto.</div>
-          ) : (
-            <form className="contact__form" onSubmit={handleSubmit}>
-              <label className="field">
-                <span>Nombre</span>
-                <input type="text" name="name" placeholder="Tu nombre" />
-              </label>
-              <label className="field">
-                <span>Email</span>
-                <input type="email" name="email" placeholder="tu@email.com" required />
-                <ValidationError prefix="Email" field="email" errors={state.errors} />
-              </label>
-              <label className="field">
-                <span>Mensaje</span>
-                <textarea name="message" placeholder="Cuéntame sobre tu proyecto" rows="4" />
-                <ValidationError prefix="Mensaje" field="message" errors={state.errors} />
-              </label>
-              <div className="form__actions">
-                <button type="submit" className="btn btn--primary" disabled={state.submitting}>
-                  Enviar
-                </button>
-                <a className="btn btn--outline" href="https://wa.me/5615839142" target="_blank">
-                  <FaPhoneAlt aria-hidden="true" /> Agendar llamada
-                </a>
-              </div>
-            </form>
-          )}
-        </div>
+        <ContactForm className="contact__form-card" />
       </div>
     </main>
   )

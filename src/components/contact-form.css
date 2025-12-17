@@ -1,0 +1,93 @@
+.contact__form-card {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.5rem;
+  box-shadow: 0 0 24px rgba(0, 231, 255, 0.12);
+}
+
+.contact__form {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact__thanks {
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(0, 231, 255, 0.08);
+  border: 1px solid rgba(0, 231, 255, 0.3);
+  color: var(--color-text);
+  text-align: center;
+  box-shadow: 0 0 16px rgba(0, 231, 255, 0.2);
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: rgba(0, 231, 255, 0.4);
+  box-shadow: 0 0 10px rgba(0, 231, 255, 0.2);
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.form__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.75rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.btn--primary {
+  background: var(--cyan);
+  color: #031015;
+  border-color: rgba(0, 231, 255, 0.7);
+  box-shadow: 0 0 18px rgba(0, 231, 255, 0.45);
+}
+
+.btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 22px rgba(0, 231, 255, 0.55);
+}
+
+.btn--outline {
+  background: transparent;
+  color: #ff9faf;
+  border-color: rgba(255, 77, 85, 0.55);
+  box-shadow: 0 0 16px rgba(255, 77, 85, 0.22);
+}
+
+.btn--outline:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(255, 77, 85, 0.32);
+}

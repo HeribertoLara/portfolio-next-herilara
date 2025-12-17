@@ -86,7 +86,7 @@ function Portfolio() {
                   )}
                   <a
                     className="project-card__btn project-card__btn--ghost"
-                    href="https://wa.me/5615839142"
+                    href="https://wa.me/529848045757"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -104,7 +104,7 @@ function Portfolio() {
           <p className="portfolio__eyebrow">¿Listo para empezar?</p>
           <h2>Construyo tu landing + funnel conectado a WhatsApp</h2>
         </div>
-        <a className="portfolio__cta portfolio__cta--whatsapp" href="https://wa.me/5615839142" rel="noreferrer">
+        <a className="portfolio__cta portfolio__cta--whatsapp" href="https://wa.me/529848045757" rel="noreferrer">
           <FaWhatsapp aria-hidden="true" />
           <span>Hablemos por WhatsApp</span>
         </a>

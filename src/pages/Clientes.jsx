@@ -1,5 +1,6 @@
-import { FaWhatsapp, FaCheckCircle, FaClock } from 'react-icons/fa'
+import { FaWhatsapp, FaCheckCircle, FaClock, FaRegCommentDots } from 'react-icons/fa'
 import { MdFilterAlt } from 'react-icons/md'
+import ContactForm from '../components/ContactForm'
 import { useSEO } from '../hooks/useSEO'
 import './clientes.css'
 
@@ -44,18 +45,24 @@ function Clientes() {
           <img src="/images/heri-landing.png" alt="Heri mostrando landing" width="540" height="680" />
         </div>
         <div className="clientes__content">
-          <p className="clientes__eyebrow">Consigue más clientes</p>
+          <p className="clientes__eyebrow">Consigue mas clientes</p>
           <h1 className="clientes__title">
             Landing page + <span>WhatsApp</span>
           </h1>
           <p className="clientes__subtitle">
-            Una página simple que envía personas interesadas directo a tu número, sin sistemas
+            Una pagina simple que envia personas interesadas directo a tu numero, sin sistemas
             complicados.
           </p>
-          <a className="clientes__cta" href="https://wa.me/5615839142" target="_blank" rel="noreferrer">
-            <FaWhatsapp aria-hidden="true" />
-            <span>Quiero más clientes ahora</span>
-          </a>
+          <div className="clientes__actions">
+            <a className="clientes__cta clientes__cta--primary" href="https://wa.me/529848045757" target="_blank" rel="noreferrer">
+              <FaWhatsapp aria-hidden="true" />
+              <span>Quiero mas clientes ahora</span>
+            </a>
+            <a className="clientes__cta clientes__cta--secondary" href="#clientes-form">
+              <FaRegCommentDots aria-hidden="true" />
+              <span>Ir al formulario</span>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -134,12 +141,33 @@ function Clientes() {
         </div>
       </section>
 
+      <section className="clientes__form" id="clientes-form">
+        <div className="clientes__form-copy">
+          <p className="clientes__eyebrow">Agenda tu landing</p>
+          <h2>Formulario corto, respuesta en 24h</h2>
+          <p className="clientes__meta">Entrega promedio: 48-72 horas</p>
+          <p>
+            Comparte el servicio que vendes y preparo un mensaje listo para WhatsApp y una ruta de
+            entrega en 48-72 horas.
+          </p>
+          <ul className="list">
+            <li>
+              <FaCheckCircle aria-hidden="true" /> Mensaje prearmado para tus prospectos.
+            </li>
+            <li>
+              <FaClock aria-hidden="true" /> Confirmacion y siguientes pasos sin rodeos.
+            </li>
+          </ul>
+        </div>
+        <ContactForm className="clientes__form-card" />
+      </section>
+
       <section className="clientes__cta-final">
         <div>
           <p className="clientes__eyebrow">Entrega en 48–72 horas</p>
           <h2>Empieza hoy con tu landing + WhatsApp</h2>
         </div>
-        <a className="clientes__cta clientes__cta--block" href="https://wa.me/5615839142" rel="noreferrer">
+        <a className="clientes__cta clientes__cta--block" href="https://wa.me/529848045757" rel="noreferrer">
           <FaWhatsapp aria-hidden="true" />
           <span>Hablar por WhatsApp</span>
         </a>

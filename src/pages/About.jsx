@@ -26,7 +26,7 @@ function About() {
       image: origin ? `${origin}/images/yo-con-traje.png` : undefined,
       sameAs: [
         'https://www.linkedin.com/in/hlara9012/',
-        'https://wa.me/5615839142',
+        'https://wa.me/529848045757',
         'mailto:hlara9012@gmail.com',
       ],
       knowsAbout: ['React', 'Next.js', 'n8n', 'WhatsApp API', 'HubSpot', 'GoHighLevel'],

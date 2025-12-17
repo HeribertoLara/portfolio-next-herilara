@@ -26,7 +26,7 @@ function Home() {
         name: 'Heri Lara',
         sameAs: [
           'https://www.linkedin.com/in/hlara9012/',
-          'https://wa.me/5615839142',
+          'https://wa.me/529848045757',
           'mailto:hlara9012@gmail.com',
         ],
       },
