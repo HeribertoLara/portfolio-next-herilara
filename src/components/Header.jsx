@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai'
-import { FaBriefcase, FaRocket } from 'react-icons/fa'
+import { FaBriefcase, FaRocket, FaChartLine } from 'react-icons/fa'
 import { MdContactMail } from 'react-icons/md'
 import './header.css'
 
@@ -10,6 +10,7 @@ const navItems = [
   { to: '/sobre-heriberto-lara', label: 'Sobre mi', Icon: AiOutlineUser },
   { to: '/portafolio-proyectos-nextjs', label: 'Portafolio', Icon: FaBriefcase },
   { to: '/contacto-desarrollador-web', label: 'Contacto', Icon: MdContactMail },
+  { to: '/mas-ventas-para-brokers', label: 'Brokers', Icon: FaChartLine },
   { to: '/consigue-mas-clientes', label: 'Consigue clientes', Icon: FaRocket },
 ]
 

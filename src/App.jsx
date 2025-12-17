@@ -6,6 +6,7 @@ import About from './pages/About'
 import Portfolio from './pages/Portfolio'
 import Contact from './pages/Contact'
 import Clientes from './pages/Clientes'
+import Brokers from './pages/Brokers'
 import NotFound from './pages/NotFound'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/portafolio-proyectos-nextjs" element={<Portfolio />} />
           <Route path="/contacto-desarrollador-web" element={<Contact />} />
           <Route path="/consigue-mas-clientes" element={<Clientes />} />
+          <Route path="/mas-ventas-para-brokers" element={<Brokers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
