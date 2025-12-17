@@ -49,6 +49,25 @@ Archivos relevantes:
    try_files $uri $uri/ /index.html;
    ```
 
+## Backend (Node + TypeScript)
+- Codigo en `../backend/` con Fastify y colas en memoria (orquestador listo para adaptadores de WhatsApp/email).
+- Configura variables copiando `../backend/.env.example` a `../backend/.env`.
+- Instala deps y levanta:
+  ```
+  cd ../backend
+  npm install
+  npm run dev
+  ```
+- Endpoints iniciales:
+  - `GET /health`
+  - `POST /webhooks/whatsapp` (tambien `GET` para verificar token)
+  - `POST /webhooks/email`
+- Para build/run en produccion:
+  ```
+  npm run build
+  npm start
+  ```
+
 ## Generar y subir a GitHub
 Si el repo es nuevo:
 ```

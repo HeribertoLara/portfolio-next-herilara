@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 .env
 .env.*.local
+
+# Backend (fuera de esta carpeta `portafolio/`)
+# Nota: como el repo git esta en `portafolio/.git`, el backend en `../backend` no queda versionado.
