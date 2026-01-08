@@ -1,8 +1,17 @@
 import { FaWhatsapp } from 'react-icons/fa'
 import { useSEO } from '../hooks/useSEO'
+import ProjectCard from '../components/ProjectCard'
 import './portfolio.css'
 
 const projects = [
+  {
+    title: 'Riviera Maya Move',
+    tag: 'Landing | Next.js',
+    desc:
+      'Landing para transportadora con sistema de reservas y flujo directo hacia WhatsApp para cotizaciones.',
+    image: '/images/portfolio-rrm.jpg',
+    link: 'https://rivieramayamove.com/',
+  },
   {
     title: 'Hotel Sevens',
     tag: 'Landing | Next.js',
@@ -11,12 +20,19 @@ const projects = [
     image: '/images/hotelsevens.jpg',
     link: 'https://hotelsevens.online/',
   },
+  {
+    title: 'Landing page Triple I Soluciones',
+    tag: 'Web corporativa',
+    desc: 'Pagina web corporativa para la empresa Triple I Soluciones.',
+    image: '/images/triple-i.jpg',
+    link: 'https://infallible-mayer-d1f8dd.netlify.app/',
+  },
 ]
 
 function Portfolio() {
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const canonical = origin ? `${origin}/portafolio-proyectos-nextjs` : undefined
-  const ogImage = origin ? `${origin}/images/hotelsevens.jpg` : undefined
+  const ogImage = origin ? `${origin}/images/portfolio-rrm.jpg` : undefined
 
   useSEO({
     title: 'Portafolio | Proyectos Next.js y funnels para WhatsApp',
@@ -47,6 +63,9 @@ function Portfolio() {
         <div className="portfolio__overlay" />
         <div className="portfolio__content">
           <p className="portfolio__eyebrow">Portafolio de proyectos</p>
+          <p className="portfolio__summary">
+            Diseño y desarrollo landing pages y sitios corporativos con enfoque en conversiones y reservas.
+          </p>
           <h1 className="portfolio__title">
             Portafolio de <span>proyectos</span>
           </h1>
@@ -60,41 +79,7 @@ function Portfolio() {
         <h2>Trabajos recientes</h2>
         <div className="project-grid">
           {projects.map((project) => (
-            <div key={project.title} className="project-card">
-              <div className="project-card__media">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    width="640"
-                    height="360"
-                  />
-                ) : (
-                  <div className="project-card__placeholder">Proyecto</div>
-                )}
-              </div>
-              <div className="project-card__body">
-                <p className="project-card__tag">{project.tag}</p>
-                <h3>{project.title}</h3>
-                <p className="project-card__desc">{project.desc}</p>
-                <div className="project-card__actions">
-                  {project.link && (
-                    <a className="project-card__btn" href={project.link} target="_blank" rel="noreferrer">
-                      Ver proyecto
-                    </a>
-                  )}
-                  <a
-                    className="project-card__btn project-card__btn--ghost"
-                    href="https://wa.me/529848045757"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Cotizar
-                  </a>
-                </div>
-              </div>
-            </div>
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
       </section>
