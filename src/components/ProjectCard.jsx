@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react'
-
+import { useTranslation } from 'react-i18next'
 const whatsappUrl = 'https://wa.me/529848045757'
 
 function ProjectCard({ project }) {
+  const { t } = useTranslation()
   const cardRef = useRef(null)
 
   useEffect(() => {
@@ -28,19 +29,25 @@ function ProjectCard({ project }) {
     <div ref={cardRef} className="project-card">
       <div className="project-card__media">
         {project.image ? (
-          <img src={project.image} alt={project.title} loading="lazy" width="640" height="360" />
+          <img
+            src={project.image}
+            alt={t(project.titleKey, { defaultValue: project.title })}
+            loading="lazy"
+            width="640"
+            height="360"
+          />
         ) : (
-          <div className="project-card__placeholder">Proyecto</div>
+          <div className="project-card__placeholder">{t('project.placeholder')}</div>
         )}
       </div>
       <div className="project-card__body">
-        <p className="project-card__tag">{project.tag}</p>
-        <h3>{project.title}</h3>
-        <p className="project-card__desc">{project.desc}</p>
+        <p className="project-card__tag">{t(project.tagKey, { defaultValue: project.tag })}</p>
+        <h3>{t(project.titleKey, { defaultValue: project.title })}</h3>
+        <p className="project-card__desc">{t(project.descKey, { defaultValue: project.desc })}</p>
         <div className="project-card__actions">
           {project.link && (
             <a className="project-card__btn" href={project.link} target="_blank" rel="noreferrer">
-              Ver proyecto
+              {t('project.button.view')}
             </a>
           )}
           <a
@@ -49,7 +56,7 @@ function ProjectCard({ project }) {
             target="_blank"
             rel="noreferrer"
           >
-            Contacto WhatsApp
+            {t('project.button.whatsapp')}
           </a>
         </div>
       </div>

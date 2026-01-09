@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import './header.css'
 
 function Footer() {
+  const { t } = useTranslation()
   return (
     <footer className="site-footer">
       <div className="site-footer__inner">

@@ -1,15 +1,17 @@
 import './home.css'
+import { useTranslation } from 'react-i18next'
 import { useSEO } from '../hooks/useSEO'
 
 function Home() {
+  const { i18n, t } = useTranslation()
+  const nextLocale = i18n.resolvedLanguage === 'en' ? 'es' : 'en'
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const canonical = origin ? `${origin}/` : undefined
   const ogImage = origin ? `${origin}/images/yo-con-traje.png` : undefined
 
   useSEO({
-    title: 'Heri Lara | Desarrollador web y funnels conectados a WhatsApp',
-    description:
-      'Desarrollador web especializado en React/Next.js y automatización de funnels conectados a WhatsApp para convertir visitas en clientes.',
+    title: t('home.seo.title'),
+    description: t('home.seo.description'),
     canonical,
     ogImage,
     ogImageWidth: 1200,
@@ -17,10 +19,9 @@ function Home() {
     schema: {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'Heri Lara Portafolio',
+      name: t('home.schema.name'),
       url: canonical,
-      description:
-        'Desarrollador web especializado en React/Next.js y automatización de funnels conectados a WhatsApp.',
+      description: t('home.schema.description'),
       creator: {
         '@type': 'Person',
         name: 'Heri Lara',
@@ -38,16 +39,30 @@ function Home() {
       <div className="home__content">
         <div className="home__text">
           <nav className="home__nav">
-            <a href="/sobre-heriberto-lara">&lt;Hola</a>
-            <a href="/portafolio-proyectos-nextjs">Me llamo</a>
-            <a href="/contacto-desarrollador-web">Heri Lara</a>
+            <a href="/sobre-heriberto-lara" data-label={t('home.nav.hover.about')}>
+              {t('home.nav.hello')}
+            </a>
+            <a href="/portafolio-proyectos-nextjs" data-label={t('home.nav.hover.portfolio')}>
+              {t('home.nav.name')}
+            </a>
+            <a href="/contacto-desarrollador-web" data-label={t('home.nav.hover.contact')}>
+              {t('home.nav.contact')}
+            </a>
           </nav>
-          <p className="home__typing">Soy desarrollador web</p>
+          <p className="home__typing">{t('home.typing')}</p>
         </div>
         <div className="home__image">
-          <img src="/images/yo-con-traje.png" alt="Heri Lara" width="360" height="690" />
+          <img src="/images/yo-con-traje.png" alt={t('home.image.alt')} width="360" height="690" />
         </div>
       </div>
+      <button
+        type="button"
+        className="home__lang"
+        onClick={() => i18n.changeLanguage(nextLocale)}
+        aria-label={t('common.changeLanguage', { lang: nextLocale.toUpperCase() })}
+      >
+        {nextLocale.toUpperCase()}
+      </button>
     </main>
   )
 }

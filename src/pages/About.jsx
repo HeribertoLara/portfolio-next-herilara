@@ -1,18 +1,19 @@
-import { useEffect } from "react"
-import { FaBolt, FaLaptopCode, FaBriefcase, FaGraduationCap } from "react-icons/fa"
-import { useSEO } from "../hooks/useSEO"
-import "./page.css"
-import "./about.css"
+import { useEffect } from 'react'
+import { FaBolt, FaLaptopCode, FaBriefcase, FaGraduationCap } from 'react-icons/fa'
+import { Trans, useTranslation } from 'react-i18next'
+import { useSEO } from '../hooks/useSEO'
+import './page.css'
+import './about.css'
 
 function About() {
+  const { t } = useTranslation()
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const canonical = origin ? `${origin}/sobre-heriberto-lara` : undefined
   const ogImage = origin ? `${origin}/images/yo-con-traje.png` : undefined
 
   useSEO({
-    title: 'Sobre Heri Lara | Desarrollador Web y Automatización',
-    description:
-      'Conoce a Heri Lara, desarrollador web especializado en React/Next.js, WhatsApp API, n8n y automatización de funnels de venta.',
+    title: t('about.seo.title'),
+    description: t('about.seo.description'),
     canonical,
     ogImage,
     ogImageWidth: 1200,
@@ -21,7 +22,7 @@ function About() {
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: 'Heri Lara',
-      jobTitle: 'Desarrollador Web y Automatización',
+      jobTitle: t('about.schema.jobTitle'),
       url: canonical,
       image: origin ? `${origin}/images/yo-con-traje.png` : undefined,
       sameAs: [
@@ -55,19 +56,25 @@ function About() {
     return () => observer.disconnect()
   }, [])
 
+  const impactItems = [
+    t('about.impact.item1'),
+    t('about.impact.item2'),
+    t('about.impact.item3'),
+  ]
+  const techItems = t('about.tech.items', { returnObjects: true })
+  const eduItems = t('about.edu.items', { returnObjects: true })
+  const softItems = t('about.soft.items', { returnObjects: true })
+
   return (
     <main className="about neon">
       <section className="about__top">
         <div className="about__intro reveal">
-          <p className="about__eyebrow">Sobre mi</p>
-          <h1 className="about__title">Heri Lara</h1>
-          <p className="about__role">
-            Web Developer enfocado en React, Next.js y automatizacion (n8n, WhatsApp API,
-            HubSpot, GoHighLevel) para escalar ventas y UX.
-          </p>
+          <p className="about__eyebrow">{t('about.eyebrow')}</p>
+          <h1 className="about__title">{t('about.title')}</h1>
+          <p className="about__role">{t('about.role')}</p>
           <div className="about__cta">
             <a className="btn" href="/portafolio-proyectos-nextjs">
-              Ver proyectos
+              {t('about.cta.projects')}
             </a>
           </div>
         </div>
@@ -81,11 +88,11 @@ function About() {
         <div className="about__stats reveal">
           <div className="stat stat--accent">
             <p className="stat__value">60%</p>
-            <p className="stat__label">conversion en reservas</p>
+            <p className="stat__label">{t('about.stats.conversion')}</p>
           </div>
           <div className="stat stat--accent">
             <p className="stat__value">-70%</p>
-            <p className="stat__label">tiempo de respuesta</p>
+            <p className="stat__label">{t('about.stats.response')}</p>
           </div>
         </div>
       </section>
@@ -96,12 +103,12 @@ function About() {
             <span className="card__icon card__icon--impact" aria-hidden="true">
               <FaBolt />
             </span>
-            <h2>Impacto reciente</h2>
+            <h2>{t('about.impact.title')}</h2>
           </div>
           <ul>
-            <li>Reduje tiempos de respuesta 70% conectando chatbots con CRM via MCP.</li>
-            <li>Automatice reservas de tours de punta a punta, eliminando 80% de errores.</li>
-            <li>Escale reservas hoteleras de 40% a 60% con flujos UX sin friccion.</li>
+            {impactItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
         </article>
 
@@ -110,18 +117,12 @@ function About() {
             <span className="card__icon card__icon--stack" aria-hidden="true">
               <FaLaptopCode />
             </span>
-            <h2>Tecnologias</h2>
+            <h2>{t('about.tech.title')}</h2>
           </div>
           <div className="tags neon-tags">
-            <span>Next.js</span>
-            <span>React</span>
-            <span>TypeScript</span>
-            <span>Node.js</span>
-            <span>n8n</span>
-            <span>WhatsApp API</span>
-            <span>HubSpot</span>
-            <span>GoHighLevel</span>
-            <span>SEO tecnico</span>
+            {techItems.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
           </div>
         </article>
 
@@ -130,35 +131,31 @@ function About() {
             <span className="card__icon card__icon--xp" aria-hidden="true">
               <FaBriefcase />
             </span>
-            <h2>Experiencia clave</h2>
+            <h2>{t('about.exp.title')}</h2>
           </div>
           <ul className="timeline">
             <li>
               <div>
-                <p className="timeline__role">Automation & MCP Workflows | Freelancer</p>
-                <p className="timeline__meta">2025 | Real estate / tours</p>
+                <p className="timeline__role">{t('about.exp.1.role')}</p>
+                <p className="timeline__meta">{t('about.exp.1.meta')}</p>
               </div>
               <p className="timeline__desc">
-                Routing inteligente, agendado automatico y confirmaciones en <strong>&lt;15s</strong>.
+                <Trans i18nKey="about.exp.1.desc" />
               </p>
             </li>
             <li>
               <div>
-                <p className="timeline__role">Web Developer | The Fives Hotels</p>
-                <p className="timeline__meta">2022-2024 | Hospitality</p>
+                <p className="timeline__role">{t('about.exp.2.role')}</p>
+                <p className="timeline__meta">{t('about.exp.2.meta')}</p>
               </div>
-              <p className="timeline__desc">
-                Web en Next.js, landing de campanas en HubSpot y automatizacion de 50+ anuncios diarios.
-              </p>
+              <p className="timeline__desc">{t('about.exp.2.desc')}</p>
             </li>
             <li>
               <div>
-                <p className="timeline__role">Web Developer | GFT (Banca)</p>
-                <p className="timeline__meta">2021-2022 | Banking</p>
+                <p className="timeline__role">{t('about.exp.3.role')}</p>
+                <p className="timeline__meta">{t('about.exp.3.meta')}</p>
               </div>
-              <p className="timeline__desc">
-                UI enterprise con Web Components/React + TypeScript, integraciones con APIs Python + Django.
-              </p>
+              <p className="timeline__desc">{t('about.exp.3.desc')}</p>
             </li>
           </ul>
         </article>
@@ -168,24 +165,19 @@ function About() {
             <span className="card__icon card__icon--edu" aria-hidden="true">
               <FaGraduationCap />
             </span>
-            <h2>Educacion</h2>
+            <h2>{t('about.edu.title')}</h2>
           </div>
           <ul>
-            <li>Ing. Quimica | UNAM</li>
-            <li>Web Dev & CS | Academlo</li>
-            <li>React/Front-End | Platzi</li>
-            <li>Automatizacion n8n & AI con MCP (2025) | Platzi</li>
+            {eduItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
 
-          <h2>Soft skills</h2>
+          <h2>{t('about.soft.title')}</h2>
           <div className="tags neon-tags">
-            <span>Ownership</span>
-            <span>Proactividad</span>
-            <span>Detalle</span>
-            <span>Liderazgo</span>
-            <span>Gestion</span>
-            <span>Adaptabilidad</span>
-            <span>Creatividad</span>
+            {softItems.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
           </div>
         </article>
       </section>

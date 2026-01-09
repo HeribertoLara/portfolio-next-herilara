@@ -57,6 +57,41 @@
   text-shadow: 0 0 18px rgba(255, 77, 85, 0.6);
 }
 
+
+.portfolio__summary {
+  margin: 0 auto;
+  max-width: 680px;
+  color: var(--color-muted);
+}
+
+.portfolio__locale {
+  display: inline-flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.portfolio__locale-btn {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--color-text);
+  font-weight: 700;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.portfolio__locale-btn.is-active {
+  border-color: rgba(0, 231, 255, 0.8);
+  box-shadow: 0 0 14px rgba(0, 231, 255, 0.35);
+  color: var(--cyan);
+}
+
+.portfolio__locale-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
 .portfolio__cta {
   display: inline-flex;
   align-items: center;

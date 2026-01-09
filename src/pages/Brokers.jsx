@@ -7,17 +7,18 @@ import {
   FaTimes,
   FaRegCommentDots,
 } from 'react-icons/fa'
+import { Trans, useTranslation } from 'react-i18next'
 import ContactForm from '../components/ContactForm'
 import { useSEO } from '../hooks/useSEO'
 import './brokers.css'
 
 function Brokers() {
+  const { t } = useTranslation()
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const canonical = origin ? `${origin}/mas-ventas-para-brokers` : undefined
   const ogImage = origin ? `${origin}/images/heri-brokers.png` : undefined
-  const title = 'Mas ventas para brokers | Landing + WhatsApp'
-  const description =
-    'Landing enfocada en captar leads calientes y enviarlos directo a tu WhatsApp para que cierres mas ventas como broker inmobiliario.'
+  const title = t('brokers.seo.title')
+  const description = t('brokers.seo.description')
   const schema = canonical
     ? {
         '@context': 'https://schema.org',
@@ -25,8 +26,8 @@ function Brokers() {
           {
             '@type': 'Service',
             '@id': `${canonical}#service`,
-            name: 'Landing page para brokers',
-            serviceType: 'Landing page + WhatsApp',
+            name: t('brokers.schema.serviceName'),
+            serviceType: t('brokers.schema.serviceType'),
             description,
             areaServed: 'Latin America',
             url: canonical,
@@ -39,7 +40,7 @@ function Brokers() {
               '@type': 'Offer',
               availability: 'https://schema.org/InStock',
               priceCurrency: 'USD',
-              price: 'A cotizar',
+              price: t('brokers.schema.offerPrice'),
               url: canonical,
             },
             audience: {
@@ -53,27 +54,26 @@ function Brokers() {
             mainEntity: [
               {
                 '@type': 'Question',
-                name: 'Como consigue mas leads esta landing?',
+                name: t('brokers.schema.faq.1.q'),
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text:
-                    'Muestra inventario y CTA directos a WhatsApp con mensajes prearmados para agendar visita o llamada.',
+                  text: t('brokers.schema.faq.1.a'),
                 },
               },
               {
                 '@type': 'Question',
-                name: 'Que incluye la entrega?',
+                name: t('brokers.schema.faq.2.q'),
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'Landing lista, mensajes a WhatsApp, bloque de propiedades y analytics basico.',
+                  text: t('brokers.schema.faq.2.a'),
                 },
               },
               {
                 '@type': 'Question',
-                name: 'En cuanto tiempo se entrega?',
+                name: t('brokers.schema.faq.3.q'),
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'En promedio 72 horas con video de avances para ajustes rapidos.',
+                  text: t('brokers.schema.faq.3.a'),
                 },
               },
             ],
@@ -85,13 +85,13 @@ function Brokers() {
               {
                 '@type': 'ListItem',
                 position: 1,
-                name: 'Home',
+                name: t('brokers.schema.breadcrumb.home'),
                 item: origin || '',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: 'Mas ventas para brokers',
+                name: t('brokers.schema.breadcrumb.current'),
                 item: canonical,
               },
             ],
@@ -115,60 +115,52 @@ function Brokers() {
       <div className="brokers__inner">
         <section className="brokers__hero">
           <div className="brokers__copy">
-            <p className="brokers__eyebrow">Mas ventas para brokers</p>
+            <p className="brokers__eyebrow">{t('brokers.eyebrow')}</p>
             <h1 className="brokers__title">
-              Leads listos para hablar <span>por WhatsApp</span>
+              <Trans i18nKey="brokers.title" components={[<span key="accent" />]} />
             </h1>
-            <p className="brokers__subtitle">
-              Usa la landing como anuncio vivo: muestra tu inventario y envia a los interesados a tu
-              WhatsApp con un mensaje ya escrito para agendar visita o llamada.
-            </p>
+            <p className="brokers__subtitle">{t('brokers.subtitle')}</p>
             <ul className="brokers__points">
               <li>
                 <FaTimes aria-hidden="true" />
-                <span>Publicas propiedades y no te escriben.</span>
+                <span>{t('brokers.pain.1')}</span>
               </li>
               <li>
                 <FaTimes aria-hidden="true" />
-                <span>Leads frios sin interes real.</span>
+                <span>{t('brokers.pain.2')}</span>
               </li>
               <li>
                 <FaTimes aria-hidden="true" />
-                <span>Respondes tarde y pierdes la cita.</span>
+                <span>{t('brokers.pain.3')}</span>
               </li>
             </ul>
             <div className="brokers__actions">
-              <a
-                className="brokers__cta"
-                href="https://wa.me/529848045757"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a className="brokers__cta" href="https://wa.me/529848045757" target="_blank" rel="noreferrer">
                 <FaWhatsapp aria-hidden="true" />
-                <span>Quiero mas leads hoy</span>
+                <span>{t('brokers.cta.primary')}</span>
               </a>
               <a className="brokers__cta brokers__cta--secondary" href="#brokers-form">
                 <FaRegCommentDots aria-hidden="true" />
-                <span>Ir al formulario</span>
+                <span>{t('brokers.cta.secondary')}</span>
               </a>
             </div>
             <div className="brokers__stat-card">
               <div className="brokers__stat">
                 <FaChartLine aria-hidden="true" />
                 <div>
-                  <p className="brokers__stat-label">Leads calificados</p>
-                  <p className="brokers__stat-value">+38%</p>
+                  <p className="brokers__stat-label">{t('brokers.stat.label')}</p>
+                  <p className="brokers__stat-value">{t('brokers.stat.value')}</p>
                 </div>
               </div>
               <ul className="brokers__list">
                 <li>
-                  <FaCheckCircle aria-hidden="true" /> Formulario corto + CTA a WhatsApp
+                  <FaCheckCircle aria-hidden="true" /> {t('brokers.list.1')}
                 </li>
                 <li>
-                  <FaCheckCircle aria-hidden="true" /> Segmentamos por zona e inmueble
+                  <FaCheckCircle aria-hidden="true" /> {t('brokers.list.2')}
                 </li>
                 <li>
-                  <FaCheckCircle aria-hidden="true" /> Mensajes prearmados para responder rapido
+                  <FaCheckCircle aria-hidden="true" /> {t('brokers.list.3')}
                 </li>
               </ul>
             </div>
@@ -178,7 +170,7 @@ function Brokers() {
               <source srcSet="/images/heri-brokers.png" type="image/png" />
               <img
                 src="/images/heri-brokers.png"
-                alt="Heri presentando landing para brokers"
+                alt={t('brokers.hero.alt')}
                 className="brokers__hero-img"
                 loading="lazy"
                 decoding="async"
@@ -190,23 +182,20 @@ function Brokers() {
 
         <section className="brokers__grid">
           <div className="brokers__panel">
-            <h2>Evita perder leads</h2>
-            <p>
-              No mas formularios eternos ni correos que nadie abre. Todo queda en tu WhatsApp para
-              contestar en minutos y agendar visitas sin friccion.
-            </p>
+            <h2>{t('brokers.grid.title')}</h2>
+            <p>{t('brokers.grid.body')}</p>
             <div className="brokers__steps">
               <div className="brokers__step">
                 <span className="brokers__step-num">1</span>
-                <p>Visitante ve tu inventario o servicio.</p>
+                <p>{t('brokers.step.1')}</p>
               </div>
               <div className="brokers__step">
                 <span className="brokers__step-num">2</span>
-                <p>Elige propiedad, toca WhatsApp.</p>
+                <p>{t('brokers.step.2')}</p>
               </div>
               <div className="brokers__step">
                 <span className="brokers__step-num">3</span>
-                <p>Hablan contigo y agendas cita.</p>
+                <p>{t('brokers.step.3')}</p>
               </div>
             </div>
           </div>
@@ -214,53 +203,42 @@ function Brokers() {
           <div className="brokers__panel brokers__panel--accent">
             <div className="brokers__panel-head">
               <FaBolt aria-hidden="true" />
-              <h2>Que incluye</h2>
+              <h2>{t('brokers.includes.title')}</h2>
             </div>
             <ul className="brokers__list">
-              <li>Landing con mensaje claro para brokers inmobiliarios.</li>
-              <li>Boton y mensajes directos a tu WhatsApp.</li>
-              <li>Bloque de propiedades destacadas o servicios.</li>
-              <li>Analytics basico listo para anuncios.</li>
+              <li>{t('brokers.includes.1')}</li>
+              <li>{t('brokers.includes.2')}</li>
+              <li>{t('brokers.includes.3')}</li>
+              <li>{t('brokers.includes.4')}</li>
             </ul>
           </div>
         </section>
 
         <section className="brokers__cta-block">
           <div>
-            <p className="brokers__eyebrow">Lista para lanzar anuncios</p>
-            <h2>Vamos por mas cierres este mes</h2>
-            <p>
-              Muestro avances en video antes de publicar y ajustamos juntos los mensajes para que
-              se sienta 100 por ciento tuyo.
-            </p>
-            <p className="brokers__note">Entrega estimada: 72 h</p>
+            <p className="brokers__eyebrow">{t('brokers.ctaBlock.eyebrow')}</p>
+            <h2>{t('brokers.ctaBlock.title')}</h2>
+            <p>{t('brokers.ctaBlock.body')}</p>
+            <p className="brokers__note">{t('brokers.ctaBlock.note')}</p>
           </div>
-          <a
-            className="brokers__cta brokers__cta--solid"
-            href="https://wa.me/529848045757"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a className="brokers__cta brokers__cta--solid" href="https://wa.me/529848045757" target="_blank" rel="noreferrer">
             <FaWhatsapp aria-hidden="true" />
-            <span>Hablar por WhatsApp</span>
+            <span>{t('brokers.ctaBlock.cta')}</span>
           </a>
         </section>
 
         <section className="brokers__form" id="brokers-form">
           <div className="brokers__form-copy">
-            <p className="brokers__eyebrow">Listo para captar leads</p>
-            <h2>Deja tus datos y te escribo hoy</h2>
-            <p className="brokers__meta">Entrega promedio en 72 horas</p>
-            <p>
-              Armo el flujo para tus anuncios y un mensaje listo para que los leads lleguen a tu
-              WhatsApp con contexto.
-            </p>
+            <p className="brokers__eyebrow">{t('brokers.form.eyebrow')}</p>
+            <h2>{t('brokers.form.title')}</h2>
+            <p className="brokers__meta">{t('brokers.form.meta')}</p>
+            <p>{t('brokers.form.body')}</p>
             <ul className="brokers__list brokers__list--tight">
               <li>
-                <FaCheckCircle aria-hidden="true" /> Mensaje prearmado para visita o llamada.
+                <FaCheckCircle aria-hidden="true" /> {t('brokers.form.list.1')}
               </li>
               <li>
-                <FaClock aria-hidden="true" /> Tiempo estimado de entrega 72h.
+                <FaClock aria-hidden="true" /> {t('brokers.form.list.2')}
               </li>
             </ul>
           </div>

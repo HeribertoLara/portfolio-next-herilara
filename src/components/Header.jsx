@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link, NavLink } from 'react-router-dom'
 import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai'
 import { FaBriefcase, FaRocket, FaChartLine } from 'react-icons/fa'
@@ -6,16 +7,18 @@ import { MdContactMail } from 'react-icons/md'
 import './header.css'
 
 const navItems = [
-  { to: '/', label: 'Home', Icon: AiOutlineHome },
-  { to: '/sobre-heriberto-lara', label: 'Sobre mi', Icon: AiOutlineUser },
-  { to: '/portafolio-proyectos-nextjs', label: 'Portafolio', Icon: FaBriefcase },
-  { to: '/contacto-desarrollador-web', label: 'Contacto', Icon: MdContactMail },
-  { to: '/mas-ventas-para-brokers', label: 'Brokers', Icon: FaChartLine },
-  { to: '/consigue-mas-clientes', label: 'Consigue clientes', Icon: FaRocket },
+  { to: '/', labelKey: 'nav.home', label: 'Home', Icon: AiOutlineHome },
+  { to: '/sobre-heriberto-lara', labelKey: 'nav.about', label: 'Sobre mi', Icon: AiOutlineUser },
+  { to: '/portafolio-proyectos-nextjs', labelKey: 'nav.portfolio', label: 'Portafolio', Icon: FaBriefcase },
+  { to: '/contacto-desarrollador-web', labelKey: 'nav.contact', label: 'Contacto', Icon: MdContactMail },
+  { to: '/mas-ventas-para-brokers', labelKey: 'nav.brokers', label: 'Brokers', Icon: FaChartLine },
+  { to: '/consigue-mas-clientes', labelKey: 'nav.clients', label: 'Consigue clientes', Icon: FaRocket },
 ]
 
 function Header() {
   const [open, setOpen] = useState(false)
+  const { i18n, t } = useTranslation()
+  const nextLocale = i18n.resolvedLanguage === 'en' ? 'es' : 'en'
 
   const toggle = () => setOpen((v) => !v)
   const close = () => setOpen(false)
@@ -48,10 +51,20 @@ function Header() {
               }
             >
               {item.Icon && <item.Icon className="site-header__link-icon" aria-hidden="true" />}
-              <span>{item.label}</span>
+              <span>{t(item.labelKey, { defaultValue: item.label })}</span>
             </NavLink>
           ))}
         </nav>
+        <div className="site-header__lang">
+          <button
+            type="button"
+            className="site-header__lang-btn"
+            onClick={() => i18n.changeLanguage(nextLocale)}
+            aria-label={t('common.changeLanguage', { lang: nextLocale.toUpperCase() })}
+          >
+            {nextLocale.toUpperCase()}
+          </button>
+        </div>
         <div
           className={`site-header__overlay${open ? ' site-header__overlay--active' : ''}`}
           onClick={close}

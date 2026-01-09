@@ -1,13 +1,15 @@
+import { useTranslation } from 'react-i18next'
 import { useSEO } from '../hooks/useSEO'
 import './page.css'
 
 function NotFound() {
+  const { t } = useTranslation()
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const canonical = origin ? `${origin}/404` : undefined
 
   useSEO({
-    title: 'Página no encontrada | Heri Lara',
-    description: 'La página que buscas no existe. Vuelve al inicio o revisa el portafolio.',
+    title: t('notFound.seo.title'),
+    description: t('notFound.seo.description'),
     canonical,
     robots: 'noindex, nofollow',
   })
@@ -16,14 +18,14 @@ function NotFound() {
     <main className="page not-found">
       <div className="not-found__content">
         <p className="not-found__eyebrow">404</p>
-        <h1>Página no encontrada</h1>
-        <p>No pude encontrar lo que buscabas. Regresa al inicio o explora los proyectos.</p>
+        <h1>{t('notFound.title')}</h1>
+        <p>{t('notFound.body')}</p>
         <div className="not-found__actions">
           <a className="btn" href="/">
-            Volver al inicio
+            {t('notFound.cta.home')}
           </a>
           <a className="btn btn--outline" href="/portafolio-proyectos-nextjs">
-            Ver portafolio
+            {t('notFound.cta.portfolio')}
           </a>
         </div>
       </div>
