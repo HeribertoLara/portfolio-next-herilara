@@ -27,6 +27,13 @@ const projects = [
     image: '/images/triple-i.jpg',
     link: 'https://infallible-mayer-d1f8dd.netlify.app/',
   },
+  {
+    title: 'FakeStore API',
+    tag: 'Consumo de API',
+    desc: 'Interfaz para consumo de la API FakeStore con productos, detalles y estados de carga.',
+    image: '/images/fakestore.png',
+    link: 'https://fakestorehl.shop/',
+  },
 ]
 
 function Portfolio() {
