@@ -5,25 +5,20 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-# Install dependencies
 COPY package*.json ./
 RUN npm ci
 
-# Build app
 COPY . .
 RUN npm run build
 
 # -------------
 # Static server
 # -------------
-FROM nginx:alpine
+FROM caddy:2-alpine
 
-# Replace default server config with SPA-friendly fallback
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copy built assets
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY Caddyfile /etc/caddy/Caddyfile
+COPY --from=build /app/dist /srv
 
 EXPOSE 80
+EXPOSE 443
 
-CMD ["nginx", "-g", "daemon off;"]

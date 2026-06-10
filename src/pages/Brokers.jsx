@@ -10,6 +10,7 @@ import {
 import { Trans, useTranslation } from 'react-i18next'
 import ContactForm from '../components/ContactForm'
 import { useSEO } from '../hooks/useSEO'
+import './page.css'
 import './brokers.css'
 
 function Brokers() {
@@ -111,15 +112,21 @@ function Brokers() {
   })
 
   return (
-    <main className="brokers">
-      <div className="brokers__inner">
+    <main className="redesign-page brokers-page">
+      <div className="redesign-page__bg">
+        <div className="redesign-page__floor" />
+        <div className="redesign-page__blob redesign-page__blob--red" />
+        <div className="redesign-page__blob redesign-page__blob--blue" />
+        <div className="redesign-page__grain" />
+      </div>
+      <div className="redesign-shell brokers__inner">
         <section className="brokers__hero">
           <div className="brokers__copy">
-            <p className="brokers__eyebrow">{t('brokers.eyebrow')}</p>
-            <h1 className="brokers__title">
-              <Trans i18nKey="brokers.title" components={[<span key="accent" />]} />
+            <p className="redesign-eyebrow">{t('brokers.eyebrow')}</p>
+            <h1 className="redesign-title brokers__title">
+              <Trans i18nKey="brokers.title" components={[<strong key="accent" />]} />
             </h1>
-            <p className="brokers__subtitle">{t('brokers.subtitle')}</p>
+            <p className="redesign-lede brokers__subtitle">{t('brokers.subtitle')}</p>
             <ul className="brokers__points">
               <li>
                 <FaTimes aria-hidden="true" />
@@ -135,11 +142,11 @@ function Brokers() {
               </li>
             </ul>
             <div className="brokers__actions">
-              <a className="brokers__cta" href="https://wa.me/529848045757" target="_blank" rel="noreferrer">
+              <a className="redesign-button redesign-button--whatsapp brokers__cta" href="https://wa.me/529848045757" target="_blank" rel="noreferrer">
                 <FaWhatsapp aria-hidden="true" />
                 <span>{t('brokers.cta.primary')}</span>
               </a>
-              <a className="brokers__cta brokers__cta--secondary" href="#brokers-form">
+              <a className="redesign-button redesign-button--ghost brokers__cta" href="#brokers-form">
                 <FaRegCommentDots aria-hidden="true" />
                 <span>{t('brokers.cta.secondary')}</span>
               </a>
@@ -216,12 +223,12 @@ function Brokers() {
 
         <section className="brokers__cta-block">
           <div>
-            <p className="brokers__eyebrow">{t('brokers.ctaBlock.eyebrow')}</p>
+            <p className="redesign-eyebrow">{t('brokers.ctaBlock.eyebrow')}</p>
             <h2>{t('brokers.ctaBlock.title')}</h2>
             <p>{t('brokers.ctaBlock.body')}</p>
             <p className="brokers__note">{t('brokers.ctaBlock.note')}</p>
           </div>
-          <a className="brokers__cta brokers__cta--solid" href="https://wa.me/529848045757" target="_blank" rel="noreferrer">
+          <a className="redesign-button redesign-button--primary brokers__cta brokers__cta--solid" href="https://wa.me/529848045757" target="_blank" rel="noreferrer">
             <FaWhatsapp aria-hidden="true" />
             <span>{t('brokers.ctaBlock.cta')}</span>
           </a>
@@ -229,7 +236,7 @@ function Brokers() {
 
         <section className="brokers__form" id="brokers-form">
           <div className="brokers__form-copy">
-            <p className="brokers__eyebrow">{t('brokers.form.eyebrow')}</p>
+            <p className="redesign-eyebrow">{t('brokers.form.eyebrow')}</p>
             <h2>{t('brokers.form.title')}</h2>
             <p className="brokers__meta">{t('brokers.form.meta')}</p>
             <p>{t('brokers.form.body')}</p>

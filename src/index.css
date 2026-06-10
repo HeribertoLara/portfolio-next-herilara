@@ -1,14 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Sora:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --font-body: 'Montserrat', sans-serif;
-  --font-mono: 'Courier Prime', monospace;
-  --color-bg: #050505;
-  --color-text: #e8fcff;
-  --color-muted: #cfe8ec;
-  --cyan: #00e7ff;
-  --red: #ff4d55;
-  --border: rgba(255, 255, 255, 0.15);
+  --font-body: 'Sora', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-display: 'Anton', sans-serif;
+  --color-bg: #050509;
+  --color-text: #eef0f4;
+  --color-muted: #b6bcc8;
+  --cyan: #19e3ff;
+  --red: #ff3b5c;
+  --wa: #25d366;
+  --border: rgba(255, 255, 255, 0.1);
 
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
   line-height: 1.6;
@@ -26,6 +28,12 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -36,4 +44,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
 }

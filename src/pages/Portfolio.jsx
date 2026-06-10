@@ -1,10 +1,19 @@
 import { FaWhatsapp } from 'react-icons/fa'
 import { Trans, useTranslation } from 'react-i18next'
 import { useSEO } from '../hooks/useSEO'
-import ProjectCard from '../components/ProjectCard'
 import './portfolio.css'
 
 const projects = [
+  {
+    titleKey: 'project.vimex.title',
+    title: 'Vimex Vacation Rentals',
+    tagKey: 'project.vimex.tag',
+    tag: 'Sitio web | Widget de reservas',
+    descKey: 'project.vimex.desc',
+    desc: 'Sitio web de rentas vacacionales con widget de reservas integrado y enfoque en conversión directa.',
+    image: '/images/portfolio-vimex.jpg',
+    link: 'https://vimexvacationrentals.com/',
+  },
   {
     titleKey: 'project.riviera.title',
     title: 'Riviera Maya Move',
@@ -23,7 +32,7 @@ const projects = [
     tag: 'Landing | Next.js',
     descKey: 'project.sevens.desc',
     desc:
-      'Landing optimizada para reservas directas, conectada a WhatsApp y enfocada en conversi\u00f3n con UX simple.',
+      'Landing optimizada para reservas directas, conectada a WhatsApp y enfocada en conversion con UX simple.',
     image: '/images/hotelsevens.jpg',
     link: 'https://hotelsevens.online/',
   },
@@ -50,7 +59,7 @@ const projects = [
 ]
 
 function Portfolio() {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const canonical = origin ? `${origin}/portafolio-proyectos-nextjs` : undefined
   const ogImage = origin ? `${origin}/images/portfolio-rrm.jpg` : undefined
@@ -78,50 +87,100 @@ function Portfolio() {
   })
 
   return (
-    <main className="portfolio">
-      <section className="portfolio__hero">
-        <div className="portfolio__overlay" />
-        <div className="portfolio__content">
-          <p className="portfolio__eyebrow">{t('portfolio.eyebrow')}</p>
-          <p className="portfolio__summary">{t('portfolio.summary')}</p>
-          <div className="portfolio__locale">
-            <button
-              className={`portfolio__locale-btn ${i18n.resolvedLanguage === 'es' ? 'is-active' : ''}`}
-              type="button"
-              onClick={() => i18n.changeLanguage('es')}
-            >
-              ES
-            </button>
-            <button
-              className={`portfolio__locale-btn ${i18n.resolvedLanguage === 'en' ? 'is-active' : ''}`}
-              type="button"
-              onClick={() => i18n.changeLanguage('en')}
-            >
-              EN
-            </button>
+    <main className="redesign-page portfolio-page">
+      <div className="redesign-page__bg">
+        <div className="redesign-page__floor" />
+        <div className="redesign-page__blob redesign-page__blob--red" />
+        <div className="redesign-page__blob redesign-page__blob--blue" />
+        <div className="redesign-page__grain" />
+      </div>
+
+      <section className="redesign-shell portfolio-page__hero">
+        <div className="portfolio-page__hero-content">
+          <div>
+            <p className="redesign-eyebrow is-ready">{t('portfolio.eyebrow')}</p>
+            <h1 className="redesign-title is-ready">
+              <div className="redesign-title-line">
+                <span className="redesign-title-text">
+                  <Trans i18nKey="portfolio.title" components={[<span key="accent" />]} />
+                </span>
+                <span className="redesign-title-glow">
+                  <Trans i18nKey="portfolio.title" components={[<span key="accent" />]} />
+                </span>
+              </div>
+            </h1>
+            <p className="redesign-lede is-ready">{t('portfolio.summary')}</p>
           </div>
-          <h1 className="portfolio__title">
-            <Trans i18nKey="portfolio.title" components={[<span key="accent" />]} />
-          </h1>
-          <a className="portfolio__cta" href="#proyectos">{t('portfolio.cta.viewProjects')}</a>
+          <div className="portfolio-page__hero-image">
+            <img
+              src="/images/heri-lab.png"
+              alt="Heri sosteniendo matraz y mechero"
+              width="420"
+              height="520"
+            />
+          </div>
         </div>
       </section>
 
-      <section className="portfolio__grid" id="proyectos">
-        <h2>{t('portfolio.section.recent')}</h2>
-        <div className="project-grid">
-          {projects.map((project) => (
-            <ProjectCard key={project.titleKey} project={project} />
+      <section className="redesign-shell portfolio-page__section" id="proyectos">
+        <div className="portfolio-page__section-head">
+          <span>{t('portfolio.section.recent')}</span>
+          <span>05</span>
+        </div>
+
+        <div className="portfolio-page__grid">
+          {projects.map((project, index) => (
+            <article key={project.titleKey} className="portfolio-project is-ready" style={{'--delay': `${index * 0.1}s`}}>
+              <div className="portfolio-project__preview">
+                <div className="portfolio-project__browser">
+                  <div className="portfolio-project__bar">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                  <img
+                    src={project.image}
+                    alt={t(project.titleKey, { defaultValue: project.title })}
+                    width="640"
+                    height="400"
+                  />
+                </div>
+              </div>
+
+              <div className="portfolio-project__body">
+                <span className={`portfolio-project__tag${index % 2 === 0 ? '' : ' is-red'}`}>
+                  {t(project.tagKey, { defaultValue: project.tag })}
+                </span>
+                <h2>{t(project.titleKey, { defaultValue: project.title })}</h2>
+                <p>{t(project.descKey, { defaultValue: project.desc })}</p>
+                <div className="portfolio-project__actions">
+                  <a
+                    className="redesign-button redesign-button--primary"
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {t('project.button.view')}
+                  </a>
+                  <a
+                    className="redesign-button redesign-button--ghost"
+                    href="https://wa.me/529848045757"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {t('project.button.whatsapp')}
+                  </a>
+                </div>
+              </div>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="portfolio__cta-final">
-        <div>
-          <p className="portfolio__eyebrow">{t('portfolio.ctaFinal.question')}</p>
-          <h2>{t('portfolio.ctaFinal.title')}</h2>
-        </div>
-        <a className="portfolio__cta portfolio__cta--whatsapp" href="https://wa.me/529848045757" rel="noreferrer">
+      <section className="redesign-shell portfolio-page__cta">
+        <p className="portfolio-page__cta-kicker">{t('portfolio.ctaFinal.question')}</p>
+        <h2>{t('portfolio.ctaFinal.title')}</h2>
+        <a className="redesign-button redesign-button--whatsapp" href="https://wa.me/529848045757">
           <FaWhatsapp aria-hidden="true" />
           <span>{t('portfolio.ctaFinal.whatsapp')}</span>
         </a>

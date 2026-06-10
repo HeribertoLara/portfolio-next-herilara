@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { FaBolt, FaLaptopCode, FaBriefcase, FaGraduationCap } from 'react-icons/fa'
+import { useEffect, useState } from 'react'
+import { FaBolt, FaBriefcase, FaGraduationCap, FaLaptopCode } from 'react-icons/fa'
 import { Trans, useTranslation } from 'react-i18next'
 import { useSEO } from '../hooks/useSEO'
 import './page.css'
@@ -7,9 +7,18 @@ import './about.css'
 
 function About() {
   const { t } = useTranslation()
+  const [titleReady, setTitleReady] = useState(false)
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const canonical = origin ? `${origin}/sobre-heriberto-lara` : undefined
   const ogImage = origin ? `${origin}/images/yo-con-traje.png` : undefined
+
+  useEffect(() => {
+    const id = window.requestAnimationFrame(() => {
+      setTitleReady(true)
+    })
+
+    return () => window.cancelAnimationFrame(id)
+  }, [])
 
   useSEO({
     title: t('about.seo.title'),
@@ -31,30 +40,8 @@ function About() {
         'mailto:hlara9012@gmail.com',
       ],
       knowsAbout: ['React', 'Next.js', 'n8n', 'WhatsApp API', 'HubSpot', 'GoHighLevel'],
-      worksFor: {
-        '@type': 'Organization',
-        name: 'Freelance',
-      },
     },
   })
-
-  useEffect(() => {
-    const elements = document.querySelectorAll('.reveal')
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in')
-            observer.unobserve(entry.target)
-          }
-        })
-      },
-      { threshold: 0.2 }
-    )
-
-    elements.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [])
 
   const impactItems = [
     t('about.impact.item1'),
@@ -66,117 +53,137 @@ function About() {
   const softItems = t('about.soft.items', { returnObjects: true })
 
   return (
-    <main className="about neon">
-      <section className="about__top">
-        <div className="about__intro reveal">
-          <p className="about__eyebrow">{t('about.eyebrow')}</p>
-          <h1 className="about__title">{t('about.title')}</h1>
-          <p className="about__role">{t('about.role')}</p>
-          <div className="about__cta">
-            <a className="btn" href="/portafolio-proyectos-nextjs">
+    <main className="redesign-page about-page">
+      <div className="redesign-page__bg">
+        <div className="redesign-page__floor" />
+        <div className="redesign-page__blob redesign-page__blob--red" />
+        <div className="redesign-page__blob redesign-page__blob--blue" />
+        <div className="redesign-page__grain" />
+      </div>
+
+      <section className="redesign-shell about-page__hero">
+        <div className="about-page__copy">
+          <p className="redesign-eyebrow">{t('about.eyebrow')}</p>
+          <h1 className={`redesign-title about-page__title${titleReady ? ' is-ready' : ''}`}>
+            <span className="about-page__title-line">
+              <span className="about-page__title-glow" aria-hidden="true">
+                {t('about.title')}
+              </span>
+              <span className="about-page__title-text">{t('about.title')}</span>
+            </span>
+            <strong className="about-page__title-line">
+              <span className="about-page__title-glow" aria-hidden="true">
+                {t('about.schema.jobTitle')}
+              </span>
+              <span className="about-page__title-text">{t('about.schema.jobTitle')}</span>
+            </strong>
+          </h1>
+          <p className="redesign-lede">{t('about.role')}</p>
+          <div className="about-page__actions">
+            <a className="redesign-button redesign-button--primary" href="/portafolio-proyectos-nextjs">
               {t('about.cta.projects')}
             </a>
           </div>
         </div>
 
-        <div className="about__portrait reveal">
-          <div className="portrait__ring">
-            <img src="/images/yo-con-traje.png" alt="Heri Lara" width="220" height="220" />
+        <div className="about-page__profile">
+          <div className="about-page__portrait">
+            <img src="/images/about.png" alt="Heri Lara" width="420" height="560" />
           </div>
-        </div>
-
-        <div className="about__stats reveal">
-          <div className="stat stat--accent">
-            <p className="stat__value">60%</p>
-            <p className="stat__label">{t('about.stats.conversion')}</p>
-          </div>
-          <div className="stat stat--accent">
-            <p className="stat__value">-70%</p>
-            <p className="stat__label">{t('about.stats.response')}</p>
+          <div className="about-page__stats">
+            <article className="redesign-card redesign-card--compact">
+              <p className="about-page__stat-value">60%</p>
+              <p className="about-page__stat-label">{t('about.stats.conversion')}</p>
+            </article>
+            <article className="redesign-card redesign-card--compact">
+              <p className="about-page__stat-value about-page__stat-value--red">-70%</p>
+              <p className="about-page__stat-label">{t('about.stats.response')}</p>
+            </article>
           </div>
         </div>
       </section>
 
-      <section className="about__grid">
-        <article className="card card--glow reveal">
-          <div className="card__header">
-            <span className="card__icon card__icon--impact" aria-hidden="true">
+      <section className="redesign-shell about-page__grid">
+        <article className="redesign-card">
+          <div className="redesign-card__header">
+            <span className="redesign-card__icon redesign-card__icon--red">
               <FaBolt />
             </span>
             <h2>{t('about.impact.title')}</h2>
           </div>
-          <ul>
+          <ul className="redesign-list">
             {impactItems.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </article>
 
-        <article className="card card--glow reveal">
-          <div className="card__header">
-            <span className="card__icon card__icon--stack" aria-hidden="true">
+        <article className="redesign-card">
+          <div className="redesign-card__header">
+            <span className="redesign-card__icon redesign-card__icon--blue">
               <FaLaptopCode />
             </span>
             <h2>{t('about.tech.title')}</h2>
           </div>
-          <div className="tags neon-tags">
-            {techItems.map((item) => (
-              <span key={item}>{item}</span>
+          <div className="redesign-chips">
+            {techItems.map((item, index) => (
+              <span
+                key={item}
+                className={index % 2 === 0 ? 'redesign-chip redesign-chip--blue' : 'redesign-chip redesign-chip--red'}
+              >
+                {item}
+              </span>
             ))}
           </div>
         </article>
 
-        <article className="card card--glow reveal">
-          <div className="card__header">
-            <span className="card__icon card__icon--xp" aria-hidden="true">
+        <article className="redesign-card">
+          <div className="redesign-card__header">
+            <span className="redesign-card__icon redesign-card__icon--blue">
               <FaBriefcase />
             </span>
             <h2>{t('about.exp.title')}</h2>
           </div>
-          <ul className="timeline">
-            <li>
-              <div>
-                <p className="timeline__role">{t('about.exp.1.role')}</p>
-                <p className="timeline__meta">{t('about.exp.1.meta')}</p>
-              </div>
-              <p className="timeline__desc">
+          <div className="about-page__timeline">
+            <div className="about-page__timeline-item">
+              <p className="about-page__timeline-role">{t('about.exp.1.role')}</p>
+              <p className="about-page__timeline-meta">{t('about.exp.1.meta')}</p>
+              <p className="about-page__timeline-desc">
                 <Trans i18nKey="about.exp.1.desc" />
               </p>
-            </li>
-            <li>
-              <div>
-                <p className="timeline__role">{t('about.exp.2.role')}</p>
-                <p className="timeline__meta">{t('about.exp.2.meta')}</p>
-              </div>
-              <p className="timeline__desc">{t('about.exp.2.desc')}</p>
-            </li>
-            <li>
-              <div>
-                <p className="timeline__role">{t('about.exp.3.role')}</p>
-                <p className="timeline__meta">{t('about.exp.3.meta')}</p>
-              </div>
-              <p className="timeline__desc">{t('about.exp.3.desc')}</p>
-            </li>
-          </ul>
+            </div>
+            <div className="about-page__timeline-item">
+              <p className="about-page__timeline-role">{t('about.exp.2.role')}</p>
+              <p className="about-page__timeline-meta">{t('about.exp.2.meta')}</p>
+              <p className="about-page__timeline-desc">{t('about.exp.2.desc')}</p>
+            </div>
+            <div className="about-page__timeline-item">
+              <p className="about-page__timeline-role">{t('about.exp.3.role')}</p>
+              <p className="about-page__timeline-meta">{t('about.exp.3.meta')}</p>
+              <p className="about-page__timeline-desc">{t('about.exp.3.desc')}</p>
+            </div>
+          </div>
         </article>
 
-        <article className="card card--glow card--two reveal">
-          <div className="card__header">
-            <span className="card__icon card__icon--edu" aria-hidden="true">
+        <article className="redesign-card">
+          <div className="redesign-card__header">
+            <span className="redesign-card__icon redesign-card__icon--red">
               <FaGraduationCap />
             </span>
             <h2>{t('about.edu.title')}</h2>
           </div>
-          <ul>
+          <ul className="redesign-list redesign-list--tight">
             {eduItems.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
 
-          <h2>{t('about.soft.title')}</h2>
-          <div className="tags neon-tags">
+          <h3 className="about-page__subheading">{t('about.soft.title')}</h3>
+          <div className="redesign-chips">
             {softItems.map((item) => (
-              <span key={item}>{item}</span>
+              <span key={item} className="redesign-chip">
+                {item}
+              </span>
             ))}
           </div>
         </article>
