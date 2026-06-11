@@ -80,7 +80,7 @@ function About() {
           </h1>
           <p className="redesign-lede">{t('about.role')}</p>
           <div className="about-page__actions">
-            <a className="redesign-button redesign-button--primary" href="/portafolio-proyectos-nextjs">
+            <a className="redesign-button redesign-button--primary" href="/portafolio">
               {t('about.cta.projects')}
             </a>
           </div>

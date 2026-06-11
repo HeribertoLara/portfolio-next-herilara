@@ -9,7 +9,7 @@ import './header.css'
 const navItems = [
   { to: '/', labelKey: 'nav.home', label: 'Home', Icon: AiOutlineHome },
   { to: '/sobre-heriberto-lara', labelKey: 'nav.about', label: 'Sobre mi', Icon: AiOutlineUser },
-  { to: '/portafolio-proyectos-nextjs', labelKey: 'nav.portfolio', label: 'Portafolio', Icon: FaBriefcase },
+  { to: '/portafolio', labelKey: 'nav.portfolio', label: 'Portafolio', Icon: FaBriefcase },
   { to: '/contacto-desarrollador-web', labelKey: 'nav.contact', label: 'Contacto', Icon: MdContactMail },
   { to: '/mas-ventas-para-brokers', labelKey: 'nav.brokers', label: 'Brokers', Icon: FaChartLine },
   { to: '/consigue-mas-clientes', labelKey: 'nav.clients', label: 'Consigue clientes', Icon: FaRocket },

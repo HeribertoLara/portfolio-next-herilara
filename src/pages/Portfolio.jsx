@@ -61,7 +61,7 @@ const projects = [
 function Portfolio() {
   const { t } = useTranslation()
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
-  const canonical = origin ? `${origin}/portafolio-proyectos-nextjs` : undefined
+  const canonical = origin ? `${origin}/portafolio` : undefined
   const ogImage = origin ? `${origin}/images/portfolio-rrm.jpg` : undefined
 
   useSEO({

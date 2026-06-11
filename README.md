@@ -6,6 +6,10 @@ Sitio SPA con React Router, SEO básico (schema JSON-LD, meta, OG/Twitter) y lis
 - Node 20.x
 - npm
 
+## Deploy VPS
+- La guia real del despliegue en Hostinger VPS esta en [`deploy.md`](./deploy.md).
+- Usa ese documento como fuente principal para futuros deploys, porque refleja la arquitectura real del servidor y del proxy global.
+
 ## Scripts
 - `npm install` instala dependencias.
 - `npm run dev` corre el entorno local (http://localhost:5173).

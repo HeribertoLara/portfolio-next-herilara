@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home'
 import Layout from './components/Layout'
@@ -21,7 +21,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/sobre-heriberto-lara" element={<About />} />
-            <Route path="/portafolio-proyectos-nextjs" element={<Portfolio />} />
+            <Route path="/portafolio" element={<Portfolio />} />
+            <Route path="/portafolio-proyectos-nextjs" element={<Navigate to="/portafolio" replace />} />
             <Route path="/contacto-desarrollador-web" element={<Contact />} />
             <Route path="/consigue-mas-clientes" element={<Clientes />} />
             <Route path="/mas-ventas-para-brokers" element={<Brokers />} />

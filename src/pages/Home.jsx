@@ -61,7 +61,7 @@ function Home() {
       line1: i18n.resolvedLanguage === 'en' ? 'My' : 'Mi',
       line2: i18n.resolvedLanguage === 'en' ? 'Portfolio' : 'Portafolio',
       subline: t('portfolio.summary'),
-      to: '/portafolio-proyectos-nextjs',
+      to: '/portafolio',
     },
     {
       id: 'clients',

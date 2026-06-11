@@ -24,7 +24,7 @@ function NotFound() {
           <a className="btn" href="/">
             {t('notFound.cta.home')}
           </a>
-          <a className="btn btn--outline" href="/portafolio-proyectos-nextjs">
+          <a className="btn btn--outline" href="/portafolio">
             {t('notFound.cta.portfolio')}
           </a>
         </div>

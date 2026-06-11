@@ -1,15 +1,16 @@
 import fs from 'fs'
 import path from 'path'
 
-const baseUrl = (process.env.SITE_URL || 'https://example.com').replace(/\/$/, '')
+const baseUrl = (process.env.SITE_URL || 'https://herilaraweb.cloud').replace(/\/$/, '')
 const today = new Date().toISOString().split('T')[0]
 
 const routes = [
   '/',
   '/sobre-heriberto-lara',
-  '/portafolio-proyectos-nextjs',
+  '/portafolio',
   '/contacto-desarrollador-web',
   '/consigue-mas-clientes',
+  '/mas-ventas-para-brokers',
 ]
 
 const urlEntries = routes
