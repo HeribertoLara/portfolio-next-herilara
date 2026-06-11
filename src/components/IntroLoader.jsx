@@ -23,6 +23,7 @@ function IntroLoader({
   const [isVisible, setIsVisible] = useState(true)
   const [progress, setProgress] = useState(0)
   const [reduceMotion, setReduceMotion] = useState(false)
+  const [isTabVisible, setIsTabVisible] = useState(true)
 
   const clearTimers = useCallback(() => {
     timeoutsRef.current.forEach((timeoutId) => window.clearTimeout(timeoutId))
@@ -41,6 +42,17 @@ function IntroLoader({
   }, [])
 
   useEffect(() => {
+    const syncVisibility = () => setIsTabVisible(document.visibilityState !== 'hidden')
+
+    syncVisibility()
+    document.addEventListener('visibilitychange', syncVisibility)
+
+    return () => document.removeEventListener('visibilitychange', syncVisibility)
+  }, [])
+
+  useEffect(() => {
+    if (!isVisible || !isTabVisible) return undefined
+
     const canvas = canvasRef.current
     if (!canvas) return undefined
 
@@ -59,8 +71,8 @@ function IntroLoader({
 
     const resize = () => {
       dpr = Math.min(2, window.devicePixelRatio || 1)
-      width = canvas.clientWidth
-      height = canvas.clientHeight
+      width = Math.min(canvas.clientWidth, 1440)
+      height = Math.min(canvas.clientHeight, 900)
       canvas.width = width * dpr
       canvas.height = height * dpr
       context.setTransform(dpr, 0, 0, dpr, 0, 0)
@@ -70,7 +82,9 @@ function IntroLoader({
     }
 
     const buildNodes = () => {
-      const totalNodes = Math.max(34, Math.min(76, Math.round((width * height) / 24000)))
+      const totalNodes = reduceMotion
+        ? 18
+        : Math.max(24, Math.min(46, Math.round((width * height) / 36000)))
       nodes = Array.from({ length: totalNodes }, (_, index) => ({
         angle: Math.random() * Math.PI * 2,
         radius: Math.sqrt(Math.random()) * maxRadius,
@@ -98,16 +112,18 @@ function IntroLoader({
         }
       })
 
-      const threshold = Math.min(width, height) * 0.22
+      const threshold = Math.min(width, height) * 0.2
+      const thresholdSquared = threshold * threshold
 
       for (let i = 0; i < points.length; i += 1) {
         for (let j = i + 1; j < points.length; j += 1) {
           const dx = points[i].x - points[j].x
           const dy = points[i].y - points[j].y
-          const distance = Math.sqrt(dx * dx + dy * dy)
+          const distanceSquared = dx * dx + dy * dy
 
-          if (distance >= threshold) continue
+          if (distanceSquared >= thresholdSquared) continue
 
+          const distance = Math.sqrt(distanceSquared)
           const weight = 0.5 + 0.5 * Math.sin(time * 1.6 + i * 0.7 + j * 0.3)
           const opacity = (1 - distance / threshold) * 0.42 * weight
 
@@ -154,7 +170,7 @@ function IntroLoader({
       window.removeEventListener('resize', handleResize)
       window.cancelAnimationFrame(frameRef.current)
     }
-  }, [reduceMotion])
+  }, [isTabVisible, isVisible, reduceMotion])
 
   const play = useCallback(() => {
     runIdRef.current += 1

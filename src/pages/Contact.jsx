@@ -9,7 +9,7 @@ function Contact() {
   const { t } = useTranslation()
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const canonical = origin ? `${origin}/contacto-desarrollador-web` : undefined
-  const ogImage = origin ? `${origin}/images/yo-con-traje.png` : undefined
+  const ogImage = origin ? `${origin}/images/contacto.png` : undefined
 
   useSEO({
     title: t('contact.seo.title'),
@@ -107,7 +107,15 @@ function Contact() {
 
         <div className="contact-page__form-wrap">
           <div className="contact-page__form-photo">
-            <img src="/images/contact.png" alt="Heri Lara" width="420" height="560" />
+            <img
+              src="/images/contacto.png"
+              alt="Heri Lara"
+              width="420"
+              height="560"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+            />
           </div>
           <ContactForm className="contact-page__form" />
         </div>

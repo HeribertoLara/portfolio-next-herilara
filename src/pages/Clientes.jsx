@@ -10,7 +10,7 @@ function Clientes() {
   const { t } = useTranslation()
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const canonical = origin ? `${origin}/consigue-mas-clientes` : undefined
-  const ogImage = origin ? `${origin}/images/heri-landing.png` : undefined
+  const ogImage = origin ? `${origin}/images/ventas2.png` : undefined
 
   useSEO({
     title: t('clientes.seo.title'),
@@ -51,7 +51,15 @@ function Clientes() {
 
       <section className="redesign-shell clientes__hero">
         <div className="clientes__photo">
-          <img src="/images/heri-landing.png" alt={t('clientes.hero.alt')} width="540" height="680" />
+          <img
+            src="/images/ventas2.png"
+            alt={t('clientes.hero.alt')}
+            width="540"
+            height="680"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
         </div>
         <div className="clientes__content">
           <p className="redesign-eyebrow">{t('clientes.eyebrow')}</p>

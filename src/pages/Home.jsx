@@ -5,10 +5,10 @@ import { useSEO } from '../hooks/useSEO'
 import './home.css'
 
 const sectionImages = [
-  '/images/about.png',
-  '/images/heri-lab.png',
-  '/images/services.png',
-  '/images/contact.png',
+  '/images/acerca_de_mi.png',
+  '/images/laboratorio.png',
+  '/images/ventas2.png',
+  '/images/contacto.png',
 ]
 
 function Home() {
@@ -17,7 +17,7 @@ function Home() {
   const nextLocale = i18n.resolvedLanguage === 'en' ? 'es' : 'en'
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const canonical = origin ? `${origin}/` : undefined
-  const ogImage = origin ? `${origin}/images/yo-con-traje.png` : undefined
+  const ogImage = origin ? `${origin}/images/acerca_de_mi.png` : undefined
 
   useSEO({
     title: t('home.seo.title'),
@@ -157,6 +157,9 @@ function Home() {
                 className={`home-redesign__image${index === activeIndex ? ' is-active' : ''}`}
                 width="520"
                 height="650"
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                fetchPriority={index === 0 ? 'high' : 'low'}
               />
             ))}
             <div className="home-redesign__image-shade" />

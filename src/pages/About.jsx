@@ -10,7 +10,7 @@ function About() {
   const [titleReady, setTitleReady] = useState(false)
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const canonical = origin ? `${origin}/sobre-heriberto-lara` : undefined
-  const ogImage = origin ? `${origin}/images/yo-con-traje.png` : undefined
+  const ogImage = origin ? `${origin}/images/acerca_de_mi.png` : undefined
 
   useEffect(() => {
     const id = window.requestAnimationFrame(() => {
@@ -33,7 +33,7 @@ function About() {
       name: 'Heri Lara',
       jobTitle: t('about.schema.jobTitle'),
       url: canonical,
-      image: origin ? `${origin}/images/yo-con-traje.png` : undefined,
+      image: origin ? `${origin}/images/acerca_de_mi.png` : undefined,
       sameAs: [
         'https://www.linkedin.com/in/hlara9012/',
         'https://wa.me/529848045757',
@@ -88,7 +88,15 @@ function About() {
 
         <div className="about-page__profile">
           <div className="about-page__portrait">
-            <img src="/images/about.png" alt="Heri Lara" width="420" height="560" />
+            <img
+              src="/images/acerca_de_mi.png"
+              alt="Heri Lara"
+              width="420"
+              height="560"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+            />
           </div>
           <div className="about-page__stats">
             <article className="redesign-card redesign-card--compact">

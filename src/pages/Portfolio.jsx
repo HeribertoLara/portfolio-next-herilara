@@ -113,10 +113,13 @@ function Portfolio() {
           </div>
           <div className="portfolio-page__hero-image">
             <img
-              src="/images/heri-lab.png"
+              src="/images/laboratorio.png"
               alt="Heri sosteniendo matraz y mechero"
               width="420"
               height="520"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
             />
           </div>
         </div>
@@ -143,6 +146,9 @@ function Portfolio() {
                     alt={t(project.titleKey, { defaultValue: project.title })}
                     width="640"
                     height="400"
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    fetchPriority={index === 0 ? 'high' : 'low'}
                   />
                 </div>
               </div>

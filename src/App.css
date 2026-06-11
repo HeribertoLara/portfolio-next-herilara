@@ -5,3 +5,6 @@
 .layout {
   min-height: 100vh;
 }
+.app-route-fallback {
+  min-height: 100vh;
+}

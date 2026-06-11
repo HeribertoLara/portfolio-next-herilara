@@ -27,7 +27,16 @@ function Header() {
     <header className="site-header">
       <div className="site-header__inner">
         <Link to="/" className="site-header__brand">
-          <img src="/images/logo.png" alt="Logo" className="site-header__logo" />
+          <img
+            src="/images/logo.png"
+            alt="Logo"
+            className="site-header__logo"
+            width="34"
+            height="34"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+          />
         </Link>
         <button
           type="button"

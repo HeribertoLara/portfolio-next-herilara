@@ -17,7 +17,7 @@ function Brokers() {
   const { t } = useTranslation()
   const origin = typeof window !== 'undefined' ? window.location.origin : ''
   const canonical = origin ? `${origin}/mas-ventas-para-brokers` : undefined
-  const ogImage = origin ? `${origin}/images/heri-brokers.png` : undefined
+  const ogImage = origin ? `${origin}/images/brokers.png` : undefined
   const title = t('brokers.seo.title')
   const description = t('brokers.seo.description')
   const schema = canonical
@@ -174,14 +174,14 @@ function Brokers() {
           </div>
           <div className="brokers__hero-media">
             <picture className="brokers__hero-picture">
-              <source srcSet="/images/heri-brokers.png" type="image/png" />
+              <source srcSet="/images/brokers.png" type="image/png" />
               <img
-                src="/images/heri-brokers.png"
+                src="/images/brokers.png"
                 alt={t('brokers.hero.alt')}
                 className="brokers__hero-img"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
-                fetchpriority="low"
+                fetchPriority="high"
               />
             </picture>
           </div>
