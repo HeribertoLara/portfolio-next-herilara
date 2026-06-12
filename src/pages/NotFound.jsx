@@ -17,9 +17,14 @@ function NotFound() {
   return (
     <main className="page not-found">
       <div className="not-found__content">
-        <p className="not-found__eyebrow">404</p>
-        <h1>{t('notFound.title')}</h1>
-        <p>{t('notFound.body')}</p>
+        <div className="not-found__media">
+          <img src="/images/404.png" alt={t('notFound.imageAlt')} loading="eager" />
+        </div>
+        <div className="not-found__copy">
+          <p className="not-found__eyebrow">404</p>
+          <h1>{t('notFound.title')}</h1>
+          <p>{t('notFound.body')}</p>
+        </div>
         <div className="not-found__actions">
           <a className="btn" href="/">
             {t('notFound.cta.home')}

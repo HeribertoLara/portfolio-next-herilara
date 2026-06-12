@@ -11,6 +11,7 @@ const routes = [
   '/contacto-desarrollador-web',
   '/consigue-mas-clientes',
   '/mas-ventas-para-brokers',
+  '/privacidad',
 ]
 
 const urlEntries = routes

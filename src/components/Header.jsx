@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, NavLink } from 'react-router-dom'
 import { AiOutlineHome, AiOutlineUser } from 'react-icons/ai'
@@ -23,6 +23,25 @@ function Header() {
   const toggle = () => setOpen((v) => !v)
   const close = () => setOpen(false)
 
+  useEffect(() => {
+    if (!open) {
+      document.body.style.removeProperty('overflow')
+      return undefined
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') close()
+    }
+
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.removeProperty('overflow')
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [open])
+
   return (
     <header className="site-header">
       <div className="site-header__inner">
@@ -40,16 +59,33 @@ function Header() {
         </Link>
         <button
           type="button"
-          className="site-header__toggle"
-          aria-label="Abrir menu"
+          className={`site-header__toggle${open ? ' site-header__toggle--open' : ''}`}
+          aria-label={open ? 'Cerrar menu' : 'Abrir menu'}
           aria-expanded={open}
+          aria-controls="site-header-nav"
           onClick={toggle}
         >
           <span />
           <span />
           <span />
         </button>
-        <nav className={`site-header__nav${open ? ' site-header__nav--open' : ''}`}>
+        <nav
+          id="site-header-nav"
+          className={`site-header__nav${open ? ' site-header__nav--open' : ''}`}
+          aria-hidden={open ? 'false' : 'true'}
+        >
+          <div className="site-header__nav-head">
+            <span className="site-header__nav-title">Menu</span>
+            <button
+              type="button"
+              className="site-header__nav-close"
+              aria-label="Cerrar menu"
+              onClick={close}
+            >
+              <span />
+              <span />
+            </button>
+          </div>
           {navItems.map((item) => (
             <NavLink
               key={item.to}

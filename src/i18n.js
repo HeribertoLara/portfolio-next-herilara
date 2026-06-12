@@ -12,6 +12,8 @@ const resources = {
       'nav.brokers': 'Brokers',
       'nav.clients': 'Consigue clientes',
       'footer.copy': '© {{year}} Heri Lara',
+      'footer.privacy': 'Privacidad',
+      'footer.cookies': 'Cookies',
       'home.seo.title': 'Heri Lara | Desarrollador web y funnels conectados a WhatsApp',
       'home.seo.description':
         'Desarrollador web especializado en React/Next.js y automatización de funnels conectados a WhatsApp para convertir visitas en clientes.',
@@ -211,10 +213,40 @@ const resources = {
         'Armo el flujo para tus anuncios y un mensaje listo para que los leads lleguen a tu WhatsApp con contexto.',
       'brokers.form.list.1': 'Mensaje prearmado para visita o llamada.',
       'brokers.form.list.2': 'Tiempo estimado de entrega 72h.',
+      'cookies.eyebrow': 'Cookies',
+      'cookies.title': 'Permiso para analitica',
+      'cookies.body':
+        'Uso cookies de analitica para entender que paginas funcionan mejor y mejorar el sitio sin invadir tu experiencia.',
+      'cookies.accept': 'Aceptar',
+      'cookies.reject': 'Rechazar',
+      'cookies.status.accepted': 'Analitica activada',
+      'cookies.status.rejected': 'Analitica desactivada',
+      'privacy.seo.title': 'Privacidad y cookies | Heri Lara',
+      'privacy.seo.description': 'Informacion basica sobre privacidad, formularios, cookies y analitica del sitio de Heri Lara.',
+      'privacy.eyebrow': 'Privacidad',
+      'privacy.title': 'Privacidad y cookies',
+      'privacy.intro':
+        'Este sitio recopila la minima informacion necesaria para responder mensajes, mejorar la experiencia y medir el rendimiento de las paginas solo cuando das tu consentimiento.',
+      'privacy.section.data.title': 'Datos que puedes compartir',
+      'privacy.section.data.body':
+        'Si me escribes por formulario, WhatsApp o email, puedo recibir tu nombre, correo y el contenido de tu mensaje para responderte sobre tu proyecto.',
+      'privacy.section.cookies.title': 'Uso de cookies',
+      'privacy.section.cookies.body':
+        'El sitio usa cookies tecnicas basicas para funcionar y puede usar cookies de analitica si las aceptas desde el aviso de consentimiento.',
+      'privacy.section.analytics.title': 'Analitica',
+      'privacy.section.analytics.body':
+        'Si aceptas, se activa Google Analytics para medir visitas y comportamiento general de navegacion. Si rechazas, esa analitica no se carga.',
+      'privacy.section.rights.title': 'Tus preferencias',
+      'privacy.section.rights.body':
+        'Puedes cambiar tu decision sobre cookies en cualquier momento desde el enlace de cookies del pie de pagina.',
+      'privacy.section.contact.title': 'Contacto',
+      'privacy.section.contact.body':
+        'Si necesitas aclarar algo sobre privacidad o el uso de tus datos, puedes escribirme desde la seccion de contacto del sitio.',
       'notFound.seo.title': 'Página no encontrada | Heri Lara',
       'notFound.seo.description': 'La página que buscas no existe. Vuelve al inicio o revisa el portafolio.',
       'notFound.title': 'Página no encontrada',
       'notFound.body': 'No pude encontrar lo que buscabas. Regresa al inicio o explora los proyectos.',
+      'notFound.imageAlt': 'Ilustracion personalizada de error 404',
       'notFound.cta.home': 'Volver al inicio',
       'notFound.cta.portfolio': 'Ver portafolio',
       'portfolio.eyebrow': 'Portafolio de proyectos',
@@ -263,6 +295,8 @@ const resources = {
       'nav.brokers': 'Brokers',
       'nav.clients': 'Get clients',
       'footer.copy': '© {{year}} Heri Lara',
+      'footer.privacy': 'Privacy',
+      'footer.cookies': 'Cookies',
       'home.seo.title': 'Heri Lara | Web developer and WhatsApp-connected funnels',
       'home.seo.description':
         'Web developer specialized in React/Next.js and WhatsApp-connected funnel automation to turn visits into clients.',
@@ -462,10 +496,40 @@ const resources = {
         'I will build the flow for your ads and a ready message so leads reach your WhatsApp with context.',
       'brokers.form.list.1': 'Pre-written message for visit or call.',
       'brokers.form.list.2': 'Estimated delivery time 72h.',
+      'cookies.eyebrow': 'Cookies',
+      'cookies.title': 'Permission for analytics',
+      'cookies.body':
+        'I use analytics cookies to understand which pages perform best and improve the site without disrupting your experience.',
+      'cookies.accept': 'Accept',
+      'cookies.reject': 'Reject',
+      'cookies.status.accepted': 'Analytics enabled',
+      'cookies.status.rejected': 'Analytics disabled',
+      'privacy.seo.title': 'Privacy and cookies | Heri Lara',
+      'privacy.seo.description': 'Basic information about privacy, forms, cookies, and analytics on Heri Lara site.',
+      'privacy.eyebrow': 'Privacy',
+      'privacy.title': 'Privacy and cookies',
+      'privacy.intro':
+        'This site collects the minimum information needed to reply to messages, improve the experience, and measure page performance only when you give consent.',
+      'privacy.section.data.title': 'Data you may share',
+      'privacy.section.data.body':
+        'If you contact me through the form, WhatsApp, or email, I may receive your name, email, and message content to reply about your project.',
+      'privacy.section.cookies.title': 'Cookie usage',
+      'privacy.section.cookies.body':
+        'This site uses basic technical cookies to work and may use analytics cookies if you accept them from the consent notice.',
+      'privacy.section.analytics.title': 'Analytics',
+      'privacy.section.analytics.body':
+        'If you accept, Google Analytics is enabled to measure visits and general browsing behavior. If you reject, that analytics script is not loaded.',
+      'privacy.section.rights.title': 'Your preferences',
+      'privacy.section.rights.body':
+        'You can change your cookie choice at any time from the cookies link in the footer.',
+      'privacy.section.contact.title': 'Contact',
+      'privacy.section.contact.body':
+        'If you need clarification about privacy or the use of your data, you can write to me from the contact section of the site.',
       'notFound.seo.title': 'Page not found | Heri Lara',
       'notFound.seo.description': 'The page you are looking for does not exist. Go home or check the portfolio.',
       'notFound.title': 'Page not found',
       'notFound.body': 'I could not find what you were looking for. Go home or explore the projects.',
+      'notFound.imageAlt': 'Custom 404 error illustration',
       'notFound.cta.home': 'Back to home',
       'notFound.cta.portfolio': 'View portfolio',
       'portfolio.eyebrow': 'Project portfolio',

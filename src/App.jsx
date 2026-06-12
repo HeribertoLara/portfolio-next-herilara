@@ -10,6 +10,7 @@ const Portfolio = lazy(() => import('./pages/Portfolio'))
 const Contact = lazy(() => import('./pages/Contact'))
 const Clientes = lazy(() => import('./pages/Clientes'))
 const Brokers = lazy(() => import('./pages/Brokers'))
+const Privacy = lazy(() => import('./pages/Privacy'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/contacto-desarrollador-web" element={<Contact />} />
             <Route path="/consigue-mas-clientes" element={<Clientes />} />
             <Route path="/mas-ventas-para-brokers" element={<Brokers />} />
+            <Route path="/privacidad" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
