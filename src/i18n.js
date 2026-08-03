@@ -283,6 +283,10 @@ const resources = {
       'project.fakestore.tag': 'Consumo de API',
       'project.fakestore.desc':
         'Interfaz para consumo de la API FakeStore con productos, detalles y estados de carga.',
+      'project.timbaflow.title': 'Timba Flow Cuban Festival',
+      'project.timbaflow.tag': 'Landing | Venta de boletos',
+      'project.timbaflow.desc':
+        'Landing page para festival cubano de timba y son en Playa del Carmen, con venta de boletos y clases en vivo.',
     },
   },
   en: {
@@ -565,6 +569,10 @@ const resources = {
       'project.fakestore.title': 'FakeStore API',
       'project.fakestore.tag': 'API consumption',
       'project.fakestore.desc': 'UI for consuming the FakeStore API with products, details, and loading states.',
+      'project.timbaflow.title': 'Timba Flow Cuban Festival',
+      'project.timbaflow.tag': 'Landing | Ticket sales',
+      'project.timbaflow.desc':
+        'Landing page for a Cuban timba and son festival in Playa del Carmen, with ticket sales and live classes.',
     },
   },
 }

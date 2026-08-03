@@ -56,6 +56,16 @@ const projects = [
     image: '/images/fakestore.png',
     link: 'https://fakestorehl.shop/',
   },
+  {
+    titleKey: 'project.timbaflow.title',
+    title: 'Timba Flow Cuban Festival',
+    tagKey: 'project.timbaflow.tag',
+    tag: 'Landing | Venta de boletos',
+    descKey: 'project.timbaflow.desc',
+    desc: 'Landing page para festival cubano de timba y son en Playa del Carmen, con venta de boletos y clases en vivo.',
+    image: '/images/portfolio-timbaflow.jpg',
+    link: 'https://timbaflowfestival.com/',
+  },
 ]
 
 function Portfolio() {
@@ -128,7 +138,7 @@ function Portfolio() {
       <section className="redesign-shell portfolio-page__section" id="proyectos">
         <div className="portfolio-page__section-head">
           <span>{t('portfolio.section.recent')}</span>
-          <span>05</span>
+          <span>06</span>
         </div>
 
         <div className="portfolio-page__grid">
